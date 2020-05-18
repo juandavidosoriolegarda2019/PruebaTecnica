@@ -37,16 +37,15 @@ namespace Prueba.FrontEnd.Pages.Listas
         public IActionResult OnPost()
         {
             HttpResponseMessage messageR;
-            messageR = _valueController.AsignarPremio(); 
+            messageR = _valueController.AsignarPremio();
+            Mensaje = messageR.Content.ReadAsAsync<string>().Result;
             if (messageR.IsSuccessStatusCode)
             {
-                Mensaje = "Se elimino el registro Exitosamente!";
-
+                Mensaje = "Se Asignarón los premios Satisfactoriamente";
             }
             else
             {
-                Mensaje = "¡No es posible Eliminar una Persona con Premio Asignado!";
-
+                Mensaje = messageR.Content.ReadAsAsync<string>().Result;
             }
             return RedirectToPage("AsignarPremio");
         }

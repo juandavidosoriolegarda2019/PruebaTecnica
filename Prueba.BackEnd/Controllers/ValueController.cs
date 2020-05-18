@@ -18,7 +18,7 @@ using HttpDeleteAttribute = Microsoft.AspNetCore.Mvc.HttpDeleteAttribute;
 
 namespace Prueba.BackEnd.Controllers
 {
-   
+    [Route("api/[controller]")]
     public class ValueController : ApiController
     {
         private readonly ILogger<ValueController> _logger;

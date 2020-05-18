@@ -63,7 +63,7 @@ namespace Prueba.FrontEnd.Pages.Listas
                     return RedirectToPage("Index"); 
                 }
                 else
-                {
+                { 
                     Mensaje ="Ya existe un Registro con el Nro.Documento:"+" "+ obj.NroDocumento.ToString()+" y el tipo documento:"+" "+obj.TipoDocumento.ToString();
                     return RedirectToPage("Crear");
                 } 
