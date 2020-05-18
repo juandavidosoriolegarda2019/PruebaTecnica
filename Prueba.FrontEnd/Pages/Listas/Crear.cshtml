@@ -1,0 +1,74 @@
+﻿@page
+@model Prueba.FrontEnd.Pages.Listas.CrearModel
+@{
+    ViewData["Title"] = "Crear";
+}
+<br />
+<h2 class="text-info">Crear Personas</h2>
+@if (Model.Mensaje != null)
+{
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @Model.Mensaje
+    </div>
+}
+
+<div class="border">
+    <form method="post">
+        <div asp-validation-summary="All" class="text-danger">
+            <div class="container">
+                <div class="form-group">
+                    <div class="row">
+                        @*Fila 1*@
+                        <div class="col-sm-6">
+                            <label asp-for="Persona.NroDocumento" class="text-info"></label>
+                            <input type="text" asp-for="Persona.NroDocumento" class="form-control" />
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="rom">
+                                <label asp-for="Persona.TipoDocumento" class="text-info"></label>
+                                <input type="text" asp-for="Persona.TipoDocumento" class="form-control"  placeholder = "CC"/>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        @*Fila 2*@
+                        <div class="col-sm-6">
+                            <label asp-for="Persona.Nombres" class="text-info"></label>
+                            <input type="text" asp-for="Persona.Nombres" class="form-control" />
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="rom">
+                                <label asp-for="Persona.Apellidos" class="text-info"></label>
+                                <input type="text" asp-for="Persona.Apellidos" class="form-control" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    @*Fila 3*@
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="rom">
+                                <label asp-for="Persona.FechaNacimiento" class="text-info"></label>
+                                <input type="text" asp-for="Persona.FechaNacimiento" class="form-control" placeholder="dd/MM/yyyy" />
+                            </div>
+                        </div>
+                        <div style="width:280px; margin-top: 30px;">
+                            <input type="submit" value="Grabar" class="btn btn-primary form-control" style="width:100px;" />
+                            <a asp-page="Index" class="btn btn-secondary form-control" style="width:100px;">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

@@ -1,0 +1,83 @@
+﻿@page
+@model  Prueba.FrontEnd.Pages.Listas.EditarModel
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<br />
+<h2 class="text-info">Editar Registro Persona</h2>
+
+<div class="border">
+    <form method="post">
+        
+            <input type="hidden" asp-for="Persona.IntId" />
+            <input type="hidden" asp-for="Persona.NroDocumento" />
+            <div class="container" style="padding:30px;">
+                <div class="form-group">
+                    <div class="row">
+                        @*Fila 1*@
+                        <div class="col-sm-2 offset-sm-2">
+                            <label asp-for="Persona.Nombres" class="text-info"></label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" asp-for="Persona.Nombres" class="form-control" />
+                        </div>
+                        <span asp-validation-for="@Model.Persona.Nombres" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        @*Fila 1*@
+                        <div class="col-sm-2 offset-sm-2">
+                            <label asp-for="Persona.Apellidos" class="text-info"></label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" asp-for="Persona.Apellidos" class="form-control" />
+                        </div>
+                        <span asp-validation-for="@Model.Persona.Apellidos" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        @*Fila 1*@
+                        <div class="col-sm-2 offset-sm-2">
+                            <label asp-for="Persona.TipoDocumento" class="text-info"></label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" asp-for="Persona.TipoDocumento" class="form-control" />
+                        </div>
+                        <span asp-validation-for="@Model.Persona.TipoDocumento" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-sm-2 offset-sm-2">
+                            <label  class="text-info"></label>
+                           @* @Html.DropDownList("AreaClass", Model.lista, new { @class = "form-control" })*@
+                        </div>
+
+                        <span asp-validation-for="@Model.Persona.FechaNacimiento" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="submit" value="Actualizar" class="btn btn-primary form-control" style="width:100px;" />
+                            <a asp-page="Index" class="btn btn-secondary form-control" style="width:150px;">Volver a Lista</a>
+                        </div>
+                        <div class="col-sm-2">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div> 
+    </form>
+</div>
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

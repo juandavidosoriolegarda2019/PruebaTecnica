@@ -1,0 +1,70 @@
+﻿@page
+@model Prueba.FrontEnd.Pages.Listas.AsignarPremio
+@{
+    ViewData["Title"] = "AsignarPremio";
+}
+<br />
+<h2 class="text-info">Asignar Premio</h2>
+<hr />
+@if (Model.Mensaje != null)
+{
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @Model.Mensaje
+    </div>
+}
+<form method="post">
+    <button asp-page-handler="edit" method="post"
+            onclick="return confirm('¿Esta Seguro que desea Asignar Premios?');"
+            class="btn btn-primary btn-sm">
+        Generar asignacion de Premios
+    </button>
+</form>
+<br />
+<hr />
+@if (Model._PersonasxPremios.Count() > 0)
+{
+    <br />
+    <form method="post">
+        <table class="table table-striped border">
+            <tr class="table-secondary">
+                <th>
+                    Código
+                </th>
+                <th>
+                    Premio
+                </th>
+                <th>
+                    Nombres
+                </th>
+                <th>
+                    Apellidos
+                </th>
+
+            </tr>
+            @foreach (var item in Model._PersonasxPremios)
+            {
+                <tr>
+
+                    <td>@Html.DisplayFor(m => item.Codigo)</td>
+                    <td>@Html.DisplayFor(m => item.Premio)</td>
+                    <td>@Html.DisplayFor(m => item.Nombres)</td>
+                    <td>@Html.DisplayFor(m => item.FechaPremio)</td>
+                </tr>
+            }
+        </table>
+    </form>
+}
+else
+{
+    <p>No hay Premios Asignados</p>
+}
+
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
